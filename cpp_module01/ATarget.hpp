@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+
 class ASpell;
 
 class ATarget

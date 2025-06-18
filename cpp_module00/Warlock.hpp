@@ -1,14 +1,12 @@
-#ifndef WARLOCK_HPP
-# define WARLOCK_HPP
+#pragma once
 
-# include <string>
-# include <iostream>
+#include <iostream>
 
 class Warlock {
 	private:
 		std::string name;
 		std::string title;
-		
+
 		Warlock();
 		Warlock(const Warlock& other);
 		Warlock& operator=(const Warlock& other);
@@ -24,5 +22,3 @@ class Warlock {
 
 		void introduce() const;
 };
-
-#endif
