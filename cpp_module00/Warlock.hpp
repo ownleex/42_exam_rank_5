@@ -4,20 +4,20 @@
 # include <string>
 # include <iostream>
 
-class Warlock{
+class Warlock {
 	private:
 		std::string name;
 		std::string title;
 		Warlock();
-		Warlock(const Warlock&);
-		Warlock& operator=(const Warlock&);
+		Warlock(const Warlock& other);
+		Warlock& operator=(const Warlock& other);
 
 	public:
-		Warlock(const std::string& name, const std::string& title);
 		virtual ~Warlock();
+		Warlock(const std::string& name, const std::string& title);
 		const std::string& getName() const;
 		const std::string& getTitle() const;
-		void setTitle(const std::string&);
+		void setTitle(const std::string& newTitle);
 		void introduce() const;
 };
 
