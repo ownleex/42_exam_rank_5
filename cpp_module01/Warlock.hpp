@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolomer <ncolomer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayarmaya <ayarmaya@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:37:27 by ncolomer          #+#    #+#             */
-/*   Updated: 2020/02/04 13:02:29 by ncolomer         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:29:51 by ayarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ public:
 	void introduce(void) const;
 
 	void learnSpell(ASpell *spell);
-	void forgetSpell(std::string const &spellName);
-	void launchSpell(std::string const &spellName, ATarget const &target);
+	void forgetSpell(std::string spellName);
+	void launchSpell(std::string spellName, ATarget const &target);
 };
 
 #endif

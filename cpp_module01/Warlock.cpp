@@ -6,7 +6,7 @@
 /*   By: ayarmaya <ayarmaya@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 20:37:13 by ncolomer          #+#    #+#             */
-/*   Updated: 2025/06/18 17:08:15 by ayarmaya         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:29:46 by ayarmaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,19 @@ void Warlock::learnSpell(ASpell *spell) {
 	}
 }
 
-void Warlock::forgetSpell(std::string const &spellName) {
-	std::vector<ASpell*>::iterator ite = this->spells.end();
-	for (std::vector<ASpell*>::iterator it = this->spells.begin(); it != ite; ++it) {
+void Warlock::forgetSpell(std::string spellName) {
+	for (std::vector<ASpell*>::iterator it = this->spells.begin(); it != this->spells.end();) {
 		if ((*it)->getName() == spellName) {
 			delete *it;
 			it = this->spells.erase(it);
+			return;
+		} else {
+			++it;
 		}
 	}
 }
 
-void Warlock::launchSpell(std::string const &spellName, ATarget const &target) {
+void Warlock::launchSpell(std::string spellName, ATarget const &target) {
 	std::vector<ASpell*>::iterator ite = this->spells.end();
 	for (std::vector<ASpell*>::iterator it = this->spells.begin(); it != ite; ++it) {
 		if ((*it)->getName() == spellName) {
