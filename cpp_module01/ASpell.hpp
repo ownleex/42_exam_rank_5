@@ -6,8 +6,8 @@ class ATarget;
 class ASpell
 {
 	protected:
-		std::string _name;
-		std::string _effects;
+		std::string name;
+		std::string effects;
 	public:
 		ASpell(const std::string &name, const std::string &title);
 		virtual ~ASpell();

@@ -9,9 +9,9 @@ class ATarget;
 class Warlock
 {
 	private:
-		std::string _name;
-		std::string _title;
-		std::map<std::string, ASpell *> _SpellBook;
+		std::string name;
+		std::string title;
+		std::map<std::string, ASpell *> SpellBook;
 	public:
 	    Warlock(const std::string &name, const std::string &title);
 	    ~Warlock();

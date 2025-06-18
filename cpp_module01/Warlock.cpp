@@ -2,7 +2,7 @@
 #include "ASpell.hpp"
 #include "ATarget.hpp"
 
-Warlock::Warlock(const std::string &name, const std::string &title): _name(name), _title(title)
+Warlock::Warlock(const std::string &name, const std::string &title): name(name), title(title)
 {
     std::cout << getName() << ": This looks like another boring day." << std::endl;
 }
@@ -13,17 +13,17 @@ Warlock::~Warlock()
 }
 const std::string &Warlock::getName() const
 {
-    return (this->_name);
+    return (this->name);
 }
 
 const std::string &Warlock::getTitle() const
 {
-    return (this->_title);
+    return (this->title);
 }
 
 void Warlock::setTitle(const std::string &title)
 {
-    this->_title = title;
+    this->title = title;
 }
 
 void Warlock::introduce() const
@@ -35,27 +35,27 @@ void Warlock::learnSpell(ASpell *spell)
 {
     if (spell != nullptr)
     {
-        std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spell->getName());
-        if (it == _SpellBook.end())
-            _SpellBook[spell->getName()] = spell->clone();
+        std::map<std::string, ASpell *>::iterator it = SpellBook.find(spell->getName());
+        if (it == SpellBook.end())
+            SpellBook[spell->getName()] = spell->clone();
     }
 }
 
 void Warlock::forgetSpell(std::string spellName)
 {
-    std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spellName);
+    std::map<std::string, ASpell *>::iterator it = SpellBook.find(spellName);
 
-    if (it != _SpellBook.end())
+    if (it != SpellBook.end())
     {
         delete it->second;
-        _SpellBook.erase(spellName);
+        SpellBook.erase(spellName);
     }
 }
 
 void Warlock::launchSpell(std::string spellName, const ATarget &src)
 {
-    std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spellName);
+    std::map<std::string, ASpell *>::iterator it = SpellBook.find(spellName);
 
-    if (it != _SpellBook.end())
+    if (it != SpellBook.end())
         it->second->launch(src);
 }
