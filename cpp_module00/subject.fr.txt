@@ -1,0 +1,78 @@
+Nom de l’exercice : cpp_module00
+Fichiers attendus : Warlock.cpp Warlock.hpp
+--------------------------------------------------------------------------------
+
+Créez une classe Warlock. Elle doit respecter la forme de Coplien.
+
+Elle possède les attributs privés suivants :
+* name (string)
+* title (string)
+
+Étant donné qu’ils sont privés, vous écrirez les accesseurs suivants :
+* getName, retourne une référence vers une chaîne constante
+* getTitle, retourne une référence vers une chaîne constante
+
+Ces deux fonctions devront pouvoir être appelées sur un objet Warlock constant.
+
+Créez également le mutateur suivant :
+* setTitle, retourne void et prend une référence vers une chaîne constante
+
+Votre Warlock aura aussi, en plus de ce qui est requis par la forme de Coplien, 
+un constructeur qui prend, dans cet ordre, son nom et son titre.
+Votre Warlock ne pourra pas être copié, ni instancié par copie, ni instancié 
+sans nom ni titre.
+
+Par exemple :
+
+Warlock bob;                            // Ne compile pas
+Warlock bob("Bob", "the magnificent");  // Compile
+Warlock jim("Jim", "the nauseating");   // Compile
+bob = jim;                              // Ne compile pas
+Warlock jack(jim);                      // Ne compile pas
+
+Lors de sa création, le Warlock dit :
+
+<NAME> : This looks like another boring day.
+
+Bien sûr, chaque fois que des espaces réservés comme <NAME>, <TITLE>, etc... 
+sont utilisés dans les sorties, vous les remplacerez par la valeur réelle, sans les chevrons < >.
+
+Lorsqu’il meurt, il dit :
+
+<NAME> : My job here is done!
+
+Notre Warlock doit aussi pouvoir se présenter, en se vantant de toutes ses forces.
+
+Vous écrirez donc la fonction suivante :
+* void introduce() const;
+
+Elle doit afficher :
+
+<NAME> : I am <NAME>, <TITLE>!
+Voici un exemple de fonction main de test et sa sortie attendue :
+
+int main()
+{
+  Warlock const richard("Richard", "Mistress of Magma");
+  richard.introduce();
+  std::cout << richard.getName() << " - " << richard.getTitle() << std::endl;
+
+  Warlock* jack = new Warlock("Jack", "the Long");
+  jack->introduce();
+  jack->setTitle("the Mighty");
+  jack->introduce();
+
+  delete jack;
+
+  return (0);
+}
+~$ ./a.out | cat -e
+Richard: This looks like another boring day.$
+Richard: I am Richard, Mistress of Magma!$
+Richard - Mistress of Magma$
+Jack: This looks like another boring day.$
+Jack: I am Jack, the Long!$
+Jack: I am Jack, the Mighty!$
+Jack: My job here is done!$
+Richard: My job here is done!$
+~$
