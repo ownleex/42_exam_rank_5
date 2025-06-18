@@ -1,0 +1,83 @@
+Nom de l’exercice : cpp_module02
+Fichiers attendus : Warlock.cpp           Warlock.hpp
+                    ASpell.hpp            ASpell.cpp
+                    ATarget.hpp           ATarget.cpp
+                    Fwoosh.hpp            Fwoosh.cpp
+                    Dummy.hpp             Dummy.cpp
+                    Fireball.hpp          Fireball.cpp
+                    Polymorph.hpp         Polymorph.cpp
+                    BrickWall.hpp         BrickWall.cpp
+                    SpellBook.hpp         SpellBook.cpp
+                    TargetGenerator.hpp   TargetGenerator.cpp
+--------------------------------------------------------------------------------
+
+Dans les classes Warlock, SpellBook et TargetGenerator, l’instruction switch est 
+INTERDITE, et son utilisation entraînera un -42.
+
+Créez les deux sorts suivants, sur le même modèle que Fwoosh :
+
+* Fireball (Nom : "Fireball", Effets : "burnt to a crisp")
+* Polymorph (Nom : "Polymorph", Effets : "turned into a critter")
+
+En plus de cela, pour éviter qu’il n’attaque seulement un dummy, faisons un nouveau 
+type de cible pour lui : Il s’agira de BrickWall (Type : "Inconspicuous Red-brick Wall")
+
+Créez maintenant une classe SpellBook, sous forme canonique (forme de Coplien), qui 
+ne peut pas être copiée ou instanciée par copie. Elle contiendra les fonctions suivantes :
+
+* void learnSpell(ASpell*) : ajoute une copie d’un sort dans le livre.
+* void forgetSpell(string const &) : supprime un sort du livre, s’il est présent.
+* ASpell* createSpell(string const &) : reçoit une chaîne correspondant au nom d’un sort, 
+le crée et le retourne.
+
+Modifiez maintenant la classe Warlock pour qu’elle contienne un livre de sorts (SpellBook) 
+qui sera créé en même temps que lui et détruit en même temps que lui.
+Faites aussi en sorte que ses fonctions learnSpell et forgetSpell appellent celles du SpellBook.
+
+La fonction launchSpell devra utiliser le SpellBook pour créer le sort qu’il essaie de lancer.
+
+Créez une classe TargetGenerator, sous forme canonique (forme de Coplien), et non copiable, 
+comme précédemment.
+
+Elle contiendra les fonctions suivantes :
+
+* void learnTargetType(ATarget*) : enseigne un type de cible au générateur
+
+* void forgetTargetType(string const &) : fait oublier un type de cible au générateur, s’il le connaît
+
+* ATarget* createTarget(string const &) : crée une cible du type spécifié
+
+Ouf, c’est terminé. Voici maintenant une fonction main de test.
+Elle n’est pas très exhaustive, donc pensez à écrire les vôtres également.
+
+int main()
+{
+  Warlock richard("Richard", "foo");
+  richard.setTitle("Hello, I'm Richard the Warlock!");
+  BrickWall model1;
+
+  Polymorph* polymorph = new Polymorph();
+  TargetGenerator tarGen;
+
+  tarGen.learnTargetType(&model1);
+  richard.learnSpell(polymorph);
+
+  Fireball* fireball = new Fireball();
+
+  richard.learnSpell(fireball);
+
+  ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
+
+  richard.introduce();
+  richard.launchSpell("Polymorph", *wall);
+  richard.launchSpell("Fireball", *wall);
+}
+Sortie attendue :
+
+~$ ./a.out | cat -e
+Richard: This looks like another boring day.$
+Richard: I am Richard, Hello, I'm Richard the Warlock!!$
+Inconspicuous Red-brick Wall has been turned into a critter!$
+Inconspicuous Red-brick Wall has been burnt to a crisp!$
+Richard: My job here is done!$
+~$
