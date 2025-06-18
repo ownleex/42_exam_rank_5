@@ -1,0 +1,94 @@
+Nom de l’exercice : cpp_module01
+Fichiers attendus : Warlock.cpp		Warlock.hpp
+					ASpell.hpp	 	ASpell.cpp
+					ATarget.hpp		ATarget.cpp
+					Fwoosh.hpp		Fwoosh.cpp
+					Dummy.hpp		Dummy.cpp
+--------------------------------------------------------------------------------
+
+Dans la classe Warlock, l’instruction switch est INTERDITE et son utilisation 
+entraînerait un -42.
+
+Créez une classe abstraite appelée ASpell, selon la forme de Coplien, 
+qui possède les attributs protégés suivants :
+
+* name (string)
+* effects (string)
+
+Les deux auront des accesseurs (getName et getEffects) qui retournent des chaînes.
+
+Ajoutez également une méthode clone pure qui retourne un pointeur vers un ASpell.
+
+Toutes ces fonctions peuvent être appelées sur un objet constant.
+
+ASpell a un constructeur qui prend son nom et ses effets, dans cet ordre.
+
+Maintenant, vous allez créer une classe abstraite ATarget, selon la forme de Coplien. 
+Elle possède un attribut type, qui est une chaîne, et son accesseur associé, getType, 
+qui retourne une référence vers une chaîne constante.
+
+De la même manière que ASpell, elle possède une méthode clone() pure.
+
+Toutes ces fonctions peuvent être appelées sur un objet constant.
+
+Elle possède un constructeur qui prend son type.
+
+Ajoutez maintenant à votre ATarget une fonction getHitBySpell qui prend une référence 
+constante vers un ASpell.
+
+Elle affichera :
+
+<TYPE> has been <EFFECTS>!
+
+<TYPE> est le type de l’ATarget, et <EFFECTS> est le retour de la fonction 
+getEffects de l’ASpell.
+
+Enfin, ajoutez à votre classe ASpell une fonction launch qui prend une 
+référence constante vers un ATarget.
+
+Celle-ci appellera simplement la méthode getHitBySpell de l’objet passé, 
+en passant l’instance actuelle en paramètre.
+
+Une fois tout cela fait, créez une implémentation de ASpell appelée Fwoosh. 
+Son constructeur par défaut définira le nom à "Fwoosh" et les effets à "fwooshed".
+Vous implémenterez bien sûr la méthode clone(). Dans le cas de Fwoosh, 
+elle retournera un pointeur vers un nouvel objet Fwoosh.
+
+De la même manière, créez une classe concrète ATarget appelée Dummy, dont le 
+type est "Target Practice Dummy". Vous devez également implémenter sa méthode clone().
+
+Ajoutez à la classe Warlock les fonctions membres suivantes :
+
+* learnSpell, qui prend un pointeur vers un ASpell, et fait en sorte que le Warlock apprenne un sort
+* forgetSpell, qui prend une chaîne correspondant au nom d’un sort, et fait en sorte que le Warlock
+l’oublie. Si ce n’est pas un sort connu, ne fait rien.
+* launchSpell, qui prend une chaîne (un nom de sort) et une référence vers un ATarget, 
+et lance le sort sur la cible sélectionnée. Si ce n’est pas un sort 
+connu, ne fait rien.
+
+Vous aurez besoin d’un nouvel attribut pour stocker les sorts que votre Warlock connaît. 
+Plusieurs types conviennent, c’est à vous de choisir le meilleur.
+
+Voici un exemple possible de fonction main de test et sa sortie attendue :
+
+int main()
+{
+  Warlock richard("Richard", "the Titled");
+
+  Dummy bob;
+  Fwoosh* fwoosh = new Fwoosh();
+
+  richard.learnSpell(fwoosh);
+
+  richard.introduce();
+  richard.launchSpell("Fwoosh", bob);
+
+  richard.forgetSpell("Fwoosh");
+  richard.launchSpell("Fwoosh", bob);
+}
+
+~$ ./a.out | cat -e
+Richard: This looks like another boring day.$
+Richard: I am Richard, the Titled!$
+Target Practice Dummy has been fwooshed!$
+Richard: My job here is done!$
