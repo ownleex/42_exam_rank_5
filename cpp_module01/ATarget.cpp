@@ -1,13 +1,10 @@
 #include "ATarget.hpp"
 
-ATarget::ATarget():
-	type() {}
+ATarget::ATarget() : type() {}
 
-ATarget::ATarget(const std::string& type):
-	type(type) {}
+ATarget::ATarget(const std::string& type) : type(type) {}
 
-ATarget::ATarget(const ATarget& other):
-	type(other.type) {}
+ATarget::ATarget(const ATarget& other) : type(other.type) {}
 
 ATarget::~ATarget() {}
 

@@ -1,13 +1,10 @@
 #include "ASpell.hpp"
 
-ASpell::ASpell():
-	name(), effects() {}
+ASpell::ASpell() : name(), effects() {}
 
-ASpell::ASpell(const std::string& name, const std::string& effects):
-	name(name), effects(effects) {}
+ASpell::ASpell(const std::string& name, const std::string& effects) : name(name), effects(effects) {}
 
-ASpell::ASpell(const ASpell& other):
-	name(other.name), effects(other.effects) {}
+ASpell::ASpell(const ASpell& other) : name(other.name), effects(other.effects) {}
 
 ASpell::~ASpell() {}
 
