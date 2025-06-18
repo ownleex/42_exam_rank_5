@@ -16,23 +16,23 @@ private:
 	std::vector<ASpell*> spells;
 
 	Warlock();
-	Warlock(Warlock const &other);
+	Warlock(const Warlock& other);
 
-	Warlock &operator=(Warlock const &other);
+	Warlock &operator=(const Warlock& other);
 public:
-	Warlock(std::string const &name, std::string const &title);
+	Warlock(const std::string& name, const std::string& title);
 	virtual ~Warlock();
 
-	std::string const &getName(void) const;
-	std::string const &getTitle(void) const;
+	const std::string& getName(void) const;
+	const std::string& getTitle(void) const;
 
-	void setTitle(std::string const &title);
+	void setTitle(const std::string& title);
 
 	void introduce(void) const;
 
 	void learnSpell(ASpell *spell);
 	void forgetSpell(std::string spellName);
-	void launchSpell(std::string spellName, ATarget const &target);
+	void launchSpell(std::string spellName, const ATarget& target);
 };
 
 #endif

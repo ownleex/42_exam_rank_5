@@ -1,6 +1,6 @@
 #include "Warlock.hpp"
 
-Warlock::Warlock(std::string const &name, std::string const &title):
+Warlock::Warlock(const std::string& name, const std::string& title):
 	name(name), title(title) {
 	std::cout << this->name << ": This looks like another boring day.\n";
 }
@@ -13,15 +13,15 @@ Warlock::~Warlock() {
 	this->spells.clear();
 }
 
-std::string const &Warlock::getName(void) const {
+const std::string& Warlock::getName(void) const {
 	return (this->name);
 }
 
-std::string const &Warlock::getTitle(void) const {
+const std::string& Warlock::getTitle(void) const {
 	return (this->title);
 }
 
-void Warlock::setTitle(std::string const &title) {
+void Warlock::setTitle(const std::string& title) {
 	this->title = title;
 }
 
@@ -51,7 +51,7 @@ void Warlock::forgetSpell(std::string spellName) {
 	}
 }
 
-void Warlock::launchSpell(std::string spellName, ATarget const &target) {
+void Warlock::launchSpell(std::string spellName, const ATarget& target) {
 	std::vector<ASpell*>::iterator ite = this->spells.end();
 	for (std::vector<ASpell*>::iterator it = this->spells.begin(); it != ite; ++it) {
 		if ((*it)->getName() == spellName) {

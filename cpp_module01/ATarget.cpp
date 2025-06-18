@@ -3,23 +3,23 @@
 ATarget::ATarget():
 	type() {}
 
-ATarget::ATarget(std::string const &type):
+ATarget::ATarget(const std::string& type):
 	type(type) {}
 
-ATarget::ATarget(ATarget const &other):
+ATarget::ATarget(const ATarget& other):
 	type(other.type) {}
 
 ATarget::~ATarget() {}
 
-ATarget &ATarget::operator=(ATarget const &other) {
+ATarget &ATarget::operator=(const ATarget& other) {
 	this->type = other.type;
 	return (*this);
 }
 
-std::string const &ATarget::getType(void) const {
+const std::string &ATarget::getType(void) const {
 	return (this->type);
 }
 
-void ATarget::getHitBySpell(ASpell const &spell) const {
+void ATarget::getHitBySpell(const ASpell& spell) const {
 	std::cout << this->type << " has been " << spell.getEffects() << "!\n";
 }

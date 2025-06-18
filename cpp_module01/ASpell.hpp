@@ -13,16 +13,16 @@ private:
 	std::string effects;
 public:
 	ASpell();
-	ASpell(std::string const &name, std::string const &effects);
-	ASpell(ASpell const &other);
+	ASpell(const std::string& name, const std::string& effects);
+	ASpell(ASpell const& other);
 	virtual ~ASpell();
 
-	ASpell &operator=(ASpell const &other);
+	ASpell& operator=(const ASpell&other);
 
-	std::string const &getName(void) const;
-	std::string const &getEffects(void) const;
+	const std::string& getName(void) const;
+	const std::string& getEffects(void) const;
 
-	void launch(ATarget const &target) const;
+	void launch(const ATarget& target) const;
 
 	virtual ASpell *clone(void) const = 0;
 };

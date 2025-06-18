@@ -12,15 +12,15 @@ private:
 	std::string type;
 public:
 	ATarget();
-	ATarget(std::string const &type);
-	ATarget(ATarget const &other);
+	ATarget(const std::string& type);
+	ATarget(const ATarget& other);
 	virtual ~ATarget();
 
-	ATarget &operator=(ATarget const &other);
+	ATarget& operator=(const ATarget& other);
 
-	std::string const &getType(void) const;
+	const std::string& getType(void) const;
 
-	void getHitBySpell(ASpell const &spell) const;
+	void getHitBySpell(const ASpell& spell) const;
 
 	virtual ATarget *clone(void) const = 0;
 };
