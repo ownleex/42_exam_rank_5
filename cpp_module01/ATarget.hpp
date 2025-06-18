@@ -4,8 +4,7 @@
 
 class ASpell;
 
-class ATarget
-{
+class ATarget {
 	protected:
 		std::string type;
 	public:

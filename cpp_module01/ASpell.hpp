@@ -4,8 +4,7 @@
 
 class ATarget;
 
-class ASpell
-{
+class ASpell {
 	protected:
 		std::string name;
 		std::string effects;
