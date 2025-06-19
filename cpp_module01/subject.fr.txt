@@ -1,9 +1,9 @@
 Nom de l’exercice : cpp_module01
 Fichiers attendus : Warlock.cpp		Warlock.hpp
-					ASpell.hpp	 	ASpell.cpp
-					ATarget.hpp		ATarget.cpp
-					Fwoosh.hpp		Fwoosh.cpp
-					Dummy.hpp		Dummy.cpp
+			          		ASpell.hpp	 	ASpell.cpp
+                    ATarget.hpp		ATarget.cpp
+                    Fwoosh.hpp		Fwoosh.cpp
+                    Dummy.hpp	   	Dummy.cpp
 --------------------------------------------------------------------------------
 
 Dans la classe Warlock, l’instruction switch est INTERDITE et son utilisation 
