@@ -10,8 +10,8 @@ class ATarget;
 class Warlock
 {
 	private:
-		std::string _name;
-		std::string _title;
+		std::string name;
+		std::string title;
 		SpellBook spellBook;
 	public:
 	    Warlock(const std::string &name, const std::string &title);

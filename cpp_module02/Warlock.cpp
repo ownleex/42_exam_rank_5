@@ -2,7 +2,7 @@
 #include "ASpell.hpp"
 #include "ATarget.hpp"
 
-Warlock::Warlock(const std::string &name, const std::string &title): _name(name), _title(title)
+Warlock::Warlock(const std::string &name, const std::string &title): name(name), title(title)
 {
     std::cout << getName() << ": This looks like another boring day." << std::endl;
 }
@@ -13,17 +13,17 @@ Warlock::~Warlock()
 }
 const std::string &Warlock::getName() const
 {
-    return (this->_name);
+    return (this->name);
 }
 
 const std::string &Warlock::getTitle() const
 {
-    return (this->_title);
+    return (this->title);
 }
 
 void Warlock::setTitle(const std::string &title)
 {
-    this->_title = title;
+    this->title = title;
 }
 
 void Warlock::introduce() const
