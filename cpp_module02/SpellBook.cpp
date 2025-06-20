@@ -6,36 +6,36 @@ SpellBook::SpellBook()
 
 SpellBook::~SpellBook()
 {
-    _SpellBook.clear();
+    spellBook.clear();
 }
 
 void SpellBook::learnSpell(ASpell *spell)
 {
     if (spell != nullptr)
     {
-        std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spell->getName());
+        std::map<std::string, ASpell *>::iterator it = spellBook.find(spell->getName());
 
-        if (it == _SpellBook.end())
-            _SpellBook[spell->getName()] = spell->clone();
+        if (it == spellBook.end())
+            spellBook[spell->getName()] = spell->clone();
     }
 }
 
 void SpellBook::forgetSpell(const std::string &spellName)
 {
-    std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spellName);
+    std::map<std::string, ASpell *>::iterator it = spellBook.find(spellName);
 
-    if (it != _SpellBook.end())
+    if (it != spellBook.end())
     {
         delete it->second;
-        _SpellBook.erase(spellName);
+        spellBook.erase(spellName);
     }
 }
 
 ASpell *SpellBook::createSpell(const std::string &spellName)
 {
-    std::map<std::string, ASpell *>::iterator it = _SpellBook.find(spellName);
+    std::map<std::string, ASpell *>::iterator it = spellBook.find(spellName);
 
-    if (it != _SpellBook.end())
+    if (it != spellBook.end())
         return (it->second->clone());
     return nullptr;
 }

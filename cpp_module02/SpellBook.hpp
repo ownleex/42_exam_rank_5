@@ -7,7 +7,7 @@ class ASpell;
 class SpellBook
 {
 	private:
-		std::map<std::string, ASpell *> _SpellBook;
+		std::map<std::string, ASpell *> spellBook;
 	public:
 		SpellBook();
 		~SpellBook();
