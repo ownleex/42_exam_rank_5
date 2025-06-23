@@ -11,7 +11,6 @@ Warlock::~Warlock() {
 const std::string& Warlock::getName() const {
 	return this->name;
 }
-
 const std::string& Warlock::getTitle() const {
 	return this->title;
 }
@@ -25,27 +24,19 @@ void Warlock::introduce() const {
 }
 
 void Warlock::learnSpell(ASpell* spell) {
-	if (spell != nullptr)
-	{
-		std::map<std::string, ASpell*>::iterator it = spellBook.find(spell->getName());
-
-		if (it == spellBook.end())
-			spellBook[spell->getName()] = spell->clone();
-	}
-
+	spellBook.learnSpell(spell);
 }
 
 void Warlock::forgetSpell(std::string spellName) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	if (it != spellBook.end())
-	{
-		delete it->second;
-		spellBook.erase(spellName);
-	}
+	spellBook.forgetSpell(spellName);
 }
 
-void Warlock::launchSpell(std::string spellName,const ATarget& src) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	if (it != spellBook.end())
-		it->second->launch(src);
+void Warlock::launchSpell(std::string spellName, const ATarget& src) {
+    ASpell *spell = spellBook.createSpell(spellName);
+
+    if (spell != nullptr)
+    {
+        spell->launch(src);
+        delete spell;
+    }
 }

@@ -9,6 +9,6 @@ const std::string& ATarget::getType() const {
 	return this->type;
 }
 
-void ATarget::getHitBySpell(const ASpell& src) const {
-	std::cout << src.getName() << " has been " << src.getEffects() << "!" << std::endl;
+void ATarget::getHitBySpell( const ASpell& src) const {
+	std::cout << this->type << " has been " << src.getEffects() << "!" << std::endl;
 }
