@@ -2,17 +2,15 @@
 
 #include <iostream>
 #include <map>
-class ATarget;
+#include "ATarget.hpp"
 
-class TargetGenerator
-{
+class TargetGenerator {
 	private:
-		std::map<std::string, ATarget *> tgtTypes;
+		std::map<std::string, ATarget*> targetType;
 	public:
 		TargetGenerator();
 		~TargetGenerator();
-
-		void learnTargetType(ATarget *);
-		void forgetTargetType(const std::string &);
-		ATarget *createTarget(const std::string &);
+		void learnTargetType(ATarget* target);
+		void forgetTargetType(const std::string& targetType);
+		ATarget* createTarget(const std::string& TargetType);
 };

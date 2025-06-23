@@ -2,17 +2,15 @@
 
 #include <iostream>
 #include <map>
-class ASpell;
+#include "ASpell.hpp"
 
-class SpellBook
-{
+class SpellBook {
 	private:
-		std::map<std::string, ASpell *> spellBook;
+		std::map<std::string, ASpell*> spellBook;
 	public:
 		SpellBook();
 		~SpellBook();
-
-		void learnSpell(ASpell *);
-		void forgetSpell(const std::string &);
-		ASpell *createSpell(const std::string &);
+		void learnSpell(ASpell* spell);
+		void forgetSpell(const std::string& spellName);
+		ASpell* createSpell(const std::string& spellName);
 };
