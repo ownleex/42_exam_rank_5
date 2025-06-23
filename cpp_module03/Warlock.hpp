@@ -3,17 +3,13 @@
 #include <iostream>
 #include <map>
 #include "ASpell.hpp"
-#include "SpellBook.hpp"
-
-class ATarget;
-class ASpell;
+#include "ATarget.hpp"
 
 class Warlock {
 	private:
 		std::string name;
 		std::string title;
-		SpellBook spellBook;
-
+		std::map<std::string, ASpell*> spellBook;
 	public:
 		Warlock(const std::string& name, const std::string& title);
 		~Warlock();
@@ -23,5 +19,5 @@ class Warlock {
 		void introduce() const;
 		void learnSpell(ASpell* spell);
 		void forgetSpell(std::string spellName);
-		void launchSpell(std::string spellName, const ATarget& src);
+		void launchSpell(std::string spellName, ATarget& src);
 };
