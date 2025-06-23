@@ -26,7 +26,7 @@ void Warlock::introduce() const {
 	std::cout << this->name << ": I am " << this->name << ", " << this->title << "!\n";
 }
 
-void learnSpell(ASpell* spell) {
+void Warlock::learnSpell(ASpell* spell) {
 	if (spell != nullptr) {
 		std::map<std::string, ASpell*>::iterator it = spellBook.find(spell->getName());
 		if (it == spellBook.end()) {
@@ -35,17 +35,17 @@ void learnSpell(ASpell* spell) {
 	}
 }
 
-void forgetSpell(std::string spellName) {
+void Warlock::forgetSpell(std::string spellName) {
 	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	if (it != spellbook.end()) {
+	if (it != spellBook.end()) {
 		delete it->second;
 		spellBook.erase(spellName);
 	}
 }
 
-void launchSpell(std::string spellName, ATarget& src) {
+void Warlock::launchSpell(std::string spellName, ATarget& src) {
 	std::map<std::string, ASpell*>::iterator it = spellBook.find(spellName);
-	if (it != spellbook.end()) {
+	if (it != spellBook.end()) {
 		it->second->launch(src);
 	}
 }
