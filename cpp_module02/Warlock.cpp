@@ -38,5 +38,6 @@ void Warlock::launchSpell(std::string spellName, const ATarget& target) {
 	ASpell* spell = spellBook.createSpell(spellName);
 	if (spell != nullptr) {
 		spell->launch(target);
+		delete spell;
 	}
 }
