@@ -6,11 +6,11 @@
 
 class TargetGenerator {
 	private:
-		std::map<std::string, ATarget*> targetType;
+		std::map<std::string, ATarget*> targetBook;
 	public:
 		TargetGenerator();
 		~TargetGenerator();
 		void learnTargetType(ATarget* target);
-		void forgetTargetType(const std::string& targetType);
-		ATarget* createTarget(const std::string& TargetType);
+		void forgetTargetType(const std::string& targetName);
+		ATarget* createTarget(const std::string& targetName);
 };

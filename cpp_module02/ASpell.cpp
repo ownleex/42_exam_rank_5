@@ -13,6 +13,6 @@ std::string ASpell::getEffects() const {
 	return this->effects;
 }
 
-void ASpell::launch(const ATarget& src) const {
-	src.getHitBySpell(*this);
+void ASpell::launch(const ATarget& target) const {
+	target.getHitBySpell(*this);
 }
